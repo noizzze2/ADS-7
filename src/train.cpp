@@ -5,7 +5,7 @@ Train::Train() : countOp(0), first(nullptr) {}
 
 void Train::addCar(bool light) {
     Car* newCar = new Car{light, nullptr, nullptr};
-    
+
     if (first == nullptr) {
         first = newCar;
         newCar->next = newCar;
@@ -21,18 +21,24 @@ void Train::addCar(bool light) {
 
 int Train::getLength() {
     if (first == nullptr) return 0;
-    
+
     countOp = 0;
-    
+
     int length = 0;
-    Car* current = first;
-    
+    const Car* current = first;
+
     do {
         length++;
         current = current->next;
         countOp++;
     } while (current != first);
-    
+
+    current = first;
+    do {
+        current = current->next;
+        countOp++;
+    } while (current != first);
+
     return length;
 }
 
