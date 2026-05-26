@@ -24,7 +24,6 @@ int Train::getLength() {
     countOp = 0;
 
     if (!first->light) {
-        // все false — простой способ (2 прохода)
         int length = 0;
         const Car* current = first;
         do {
@@ -41,7 +40,6 @@ int Train::getLength() {
 
         return length;
     } else {
-        // все true — нерациональный способ O(n²)
         int length = 0;
         Car* current = first;
         do {
