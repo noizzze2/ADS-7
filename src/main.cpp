@@ -39,7 +39,8 @@ int main() {
             resRand = train.getOpCount();
         }
 
-        std::cout << n << "\t" << resFalse << "\t" << resTrue << "\t" << resRand << "\n";
+        std::cout << n << "\t" << resFalse << "\t"
+                  << resTrue << "\t" << resRand << "\n";
     }
 
     return 0;
