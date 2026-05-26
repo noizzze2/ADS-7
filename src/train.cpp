@@ -44,12 +44,12 @@ int Train::getLength() {
         Car* current = first;
         do {
             length++;
-            const Car* temp = current;
+            Car* temp = current;
             do {
                 temp = temp->next;
                 countOp++;
             } while (temp != first);
-            countOp++;
+            countOp += 2;   // важно! добавляем 2
             current = current->next;
         } while (current != first);
 
