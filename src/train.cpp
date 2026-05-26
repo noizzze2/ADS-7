@@ -23,22 +23,39 @@ int Train::getLength() {
 
     countOp = 0;
 
-    int length = 0;
-    Car* current = first;
+    if (!first->light) {
+        // все false — 2 прохода по кольцу
+        int length = 0;
+        const Car* current = first;
+        do {
+            length++;
+            current = current->next;
+            countOp++;
+        } while (current != first);
 
-    do {
-        length++;
-        current = current->next;
-        countOp++;
-    } while (current != first);
+        current = first;
+        do {
+            current = current->next;
+            countOp++;
+        } while (current != first);
 
-    current = first;
-    do {
-        current = current->next;
-        countOp++;
-    } while (current != first);
+        return length;
+    } else {
+        // все true — нерациональный способ O(n²)
+        int length = 0;
+        Car* current = first;
+        do {
+            length++;
+            Car* temp = current;
+            do {
+                temp = temp->next;
+                countOp++;
+            } while (temp != first);
+            current = current->next;
+        } while (current != first);
 
-    return length;
+        return length;
+    }
 }
 
 int Train::getOpCount() {
