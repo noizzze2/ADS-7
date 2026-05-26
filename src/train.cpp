@@ -24,7 +24,7 @@ int Train::getLength() {
     countOp = 0;
 
     if (!first->light) {
-        // все false — 2 прохода по кольцу
+        // все false — простой способ (2 прохода)
         int length = 0;
         const Car* current = first;
         do {
@@ -46,7 +46,7 @@ int Train::getLength() {
         Car* current = first;
         do {
             length++;
-            Car* temp = current;
+            const Car* temp = current;
             do {
                 temp = temp->next;
                 countOp++;
