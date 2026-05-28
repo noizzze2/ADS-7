@@ -1,8 +1,8 @@
 // Copyright 2022 NNTU-CS
 #include <iostream>
-#include "train.h"
 #include <cstdlib>
 #include <ctime>
+#include "train.h"
 
 int main() {
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
