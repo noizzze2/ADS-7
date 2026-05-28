@@ -23,9 +23,10 @@ int Train::getLength() {
 
     countOp = 0;
 
+    int length = 0;
+    Car* current = first;
+
     if (!first->light) {
-        int length = 0;
-        const Car* current = first;
         do {
             length++;
             current = current->next;
@@ -37,11 +38,7 @@ int Train::getLength() {
             current = current->next;
             countOp++;
         } while (current != first);
-
-        return length;
     } else {
-        int length = 0;
-        Car* current = first;
         do {
             length++;
             Car* temp = current;
@@ -49,12 +46,11 @@ int Train::getLength() {
                 temp = temp->next;
                 countOp++;
             } while (temp != first);
-            countOp += 2;   // важно! добавляем 2
             current = current->next;
         } while (current != first);
-
-        return length;
     }
+
+    return length;
 }
 
 int Train::getOpCount() {
