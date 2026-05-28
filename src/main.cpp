@@ -10,30 +10,22 @@ int main() {
     std::cout << "n off on random" << std::endl;
 
     for (int n = 10; n <= 100; n += 10) {
-        Train trainOff;
-        for (int i = 0; i < n; i++) {
-            trainOff.addCar(false);
-        }
-        trainOff.getLength();
-        int offOps = trainOff.getOpCount();
+        Train t1;
+        for (int i = 0; i < n; i++) t1.addCar(false);
+        t1.getLength();
+        int off = t1.getOpCount();
 
-        Train trainOn;
-        for (int i = 0; i < n; i++) {
-            trainOn.addCar(true);
-        }
-        trainOn.getLength();
-        int onOps = trainOn.getOpCount();
+        Train t2;
+        for (int i = 0; i < n; i++) t2.addCar(true);
+        t2.getLength();
+        int on = t2.getOpCount();
 
-        Train trainRandom;
-        for (int i = 0; i < n; i++) {
-            bool light = std::rand() % 2;
-            trainRandom.addCar(light);
-        }
-        trainRandom.getLength();
-        int randomOps = trainRandom.getOpCount();
+        Train t3;
+        for (int i = 0; i < n; i++) t3.addCar(std::rand() % 2);
+        t3.getLength();
+        int rnd = t3.getOpCount();
 
-        std::cout << n << " " << offOps << " " 
-                  << onOps << " " << randomOps << std::endl;
+        std::cout << n << " " << off << " " << on << " " << rnd << std::endl;
     }
 
     return 0;
