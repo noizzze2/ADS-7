@@ -1,46 +1,39 @@
 // Copyright 2022 NNTU-CS
-#include <cstdlib>
-#include <ctime>
 #include <iostream>
 #include "train.h"
+#include <cstdlib>
+#include <ctime>
 
 int main() {
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
-    std::cout << "n\tfalse\ttrue\trandom\n";
+    std::cout << "n off on random" << std::endl;
 
-    for (int n = 2; n <= 100; ++n) {
-        int resFalse, resTrue, resRand;
-
-        {
-            Train train;
-            for (int i = 0; i < n; ++i) {
-                train.addCar(false);
-            }
-            train.getLength();
-            resFalse = train.getOpCount();
+    for (int n = 10; n <= 100; n += 10) {
+        Train trainOff;
+        for (int i = 0; i < n; i++) {
+            trainOff.addCar(false);
         }
+        trainOff.getLength();
+        int offOps = trainOff.getOpCount();
 
-        {
-            Train train;
-            for (int i = 0; i < n; ++i) {
-                train.addCar(true);
-            }
-            train.getLength();
-            resTrue = train.getOpCount();
+        Train trainOn;
+        for (int i = 0; i < n; i++) {
+            trainOn.addCar(true);
         }
+        trainOn.getLength();
+        int onOps = trainOn.getOpCount();
 
-        {
-            Train train;
-            for (int i = 0; i < n; ++i) {
-                train.addCar(std::rand() % 2);
-            }
-            train.getLength();
-            resRand = train.getOpCount();
+        Train trainRandom;
+        for (int i = 0; i < n; i++) {
+            bool light = std::rand() % 2;
+            trainRandom.addCar(light);
         }
+        trainRandom.getLength();
+        int randomOps = trainRandom.getOpCount();
 
-        std::cout << n << "\t" << resFalse << "\t"
-                  << resTrue << "\t" << resRand << "\n";
+        std::cout << n << " " << offOps << " " 
+                  << onOps << " " << randomOps << std::endl;
     }
 
     return 0;
